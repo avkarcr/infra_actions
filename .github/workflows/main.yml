@@ -1,21 +1,24 @@
-name: CI
+name: Django-app Workflow
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Running a one-line script! It works!!
-
-      - name: Run a multi-line script
-        run: |
-          echo Running a multi-line script! Line 1
-          echo Line 2. It works!!
+    - uses: actions/checkout@2
+    - name: Set up python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        # pip update
+        python -m pip install --upgrade pip
+        # flake8 install
+        pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
+        # install dependencies
+        pip install -r requirements.txt
+    - name: Test with flake8 and Django tests
+      run: |
+        python -m flake8
