@@ -39,6 +39,12 @@ jobs:
         echo "ls -l"
         ls -l
         echo "-----------------------"
+        echo "ls -l ../"
+        ls -l ../
+        echo "-----------------------"
+        echo "ls -l ../../"
+        ls -l ../../
+        echo "-----------------------"
         echo "\$GITHUB_ACTION = $GITHUB_ACTION"
         echo "======================="
         docker images
