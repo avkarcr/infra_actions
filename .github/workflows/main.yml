@@ -33,7 +33,7 @@ jobs:
       run: |
         docker build /home/runner/work/infra_actions/infra_actions/
         echo "======================="
-        echo $GITHUB_ACTIONS
+        echo $GITHUB_ACTION
         echo "======================="
         docker images
         docker ps -a
