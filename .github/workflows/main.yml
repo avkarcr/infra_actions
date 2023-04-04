@@ -31,7 +31,7 @@ jobs:
     steps:
     - name: Build Docker image and push it to Docker Hub
       run: |
-        docker build /home/runner/work/infra_actions/infra_actions/
+        docker build /home/runner/work/infra_actions/
         echo "======================="
         echo $GITHUB_ACTION
         echo "======================="
