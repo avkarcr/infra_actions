@@ -29,13 +29,19 @@ jobs:
     runs-on: ubuntu-latest
     needs: tests
     steps:
-    # - name: Checkout
-    #   uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Docker Login
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Docker Build-push Action
       uses: docker/build-push-action@v4
       with:
         context: .
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/infra_actions:latest
     - name: Build Docker image and push it to Docker Hub
       run: |
         docker build .
-        docker ps -a
