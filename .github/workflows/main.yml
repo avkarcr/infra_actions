@@ -37,9 +37,5 @@ jobs:
         context: .
     - name: Build Docker image and push it to Docker Hub
       run: |
-        # docker build .
-        echo "======================="
-        pwd
-        echo "======================="
-        docker images
+        docker build .
         docker ps -a
