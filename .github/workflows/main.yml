@@ -32,6 +32,7 @@ jobs:
     - name: Build Docker image and push it to Docker Hub
       run: |
         # docker image build
+        cd ..
         docker build .
         docker images
         docker ps -a
