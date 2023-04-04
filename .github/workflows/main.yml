@@ -25,3 +25,13 @@ jobs:
         # go to the manage.py directory
         cd infra_project/
         python manage.py test
+  build:
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+    - name: Build Docker image and push it to Docker Hub
+      run: |
+        # docker image build
+        docker build .
+        docker images
+        docker ps -a
